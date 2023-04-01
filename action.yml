@@ -41,7 +41,7 @@ runs:
         echo } >> smartcat.json
       shell: sh
     - run: |
-        smartcat import --collection=${{ inputs.translationFileName }} ${{ inputs.filepat }} --project ${{ inputs.projectId }} --language en-US -c ./smart.json
+        smartcat import --collection=${{ inputs.translationFileName }} ${{ inputs.filepath }} --project ${{ inputs.projectId }} --language en-US -c ./smartcat.json
       shell: sh
     - run: |
         rm -rf smartcat.json
