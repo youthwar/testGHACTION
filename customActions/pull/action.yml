@@ -48,7 +48,6 @@ runs:
       uses: peter-evans/create-pull-request@v4
       with:
         branch: "translation-update"
-        title: "New Translation files for ${{ inputs.languages }} "
-        assignees: youthwar
+        title: "New Translation files for ${{ inputs.languages }}"
         base: main
         token: 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
