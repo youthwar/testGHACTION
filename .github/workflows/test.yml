@@ -10,12 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Build SmartCat
-        run: |
-          curl "https://smartcat-cli.s3.amazonaws.com/smartcat-linux-x64.zip" -o /tmp/smartcat.zip
-          unzip -q /tmp/smartcat.zip -d /usr/local/bin
-          chmod +x /usr/local/bin/smartcat
-
+    
       - name: WithAction
         uses: ./
         with:
