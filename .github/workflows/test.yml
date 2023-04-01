@@ -19,3 +19,4 @@ jobs:
           apiToken: "4_AKCaq7P1q2NOgrk54FD2U2tLA"
           languages: fr
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          outputPathPrefix: "./src/i18n/translations"
