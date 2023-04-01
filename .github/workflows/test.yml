@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build SmartCat
-        run: |
+        - run: |
           curl "https://smartcat-cli.s3.amazonaws.com/smartcat-osx-x64.zip" -o /tmp/smartcat.zip
           unzip -q /tmp/smartcat.zip -d /usr/local/bin
           chmod +x /usr/local/bin/smartcat
 
-        run: smartcat
+        - run: smartcat
 
