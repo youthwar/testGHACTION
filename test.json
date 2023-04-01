@@ -1,0 +1,9 @@
+{
+  "test": "hey",
+  "try": "this",
+  "alright": {
+    "deep": {
+      "nested": "value"
+    }
+  }
+}
