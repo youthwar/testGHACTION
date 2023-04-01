@@ -53,6 +53,8 @@ runs:
       shell: sh
 
     - run: |
+        git config --global user.email "bot@breville.com"
+        git config --global user.name "Breville"
         git add -A
         git commit -m "NEWEST TRANSLATIONS"
       shell: sh
