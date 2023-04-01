@@ -17,5 +17,5 @@ jobs:
           chmod +x /usr/local/bin/smartcat
 
       - name: Test
-        run: smartcat import collection=actiontest ./test.json --project fdfa0c4f-b08c-435f-9b57-6e54930280d3 --language en-US -c ./config.json
+        run: smartcat import --collection=actiontest ./test.json --project fdfa0c4f-b08c-435f-9b57-6e54930280d3 --language en-US -c ./config.json
 
