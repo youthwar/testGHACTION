@@ -18,4 +18,4 @@ jobs:
           projectId: "fdfa0c4f-b08c-435f-9b57-6e54930280d3"
           apiToken: "4_AKCaq7P1q2NOgrk54FD2U2tLA"
           filepath: "./test.json" 
-          translationFileName: "customGHACTION"
+          translationFileName: "NEWEST"

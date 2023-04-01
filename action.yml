@@ -41,6 +41,3 @@ runs:
     - run: |
         smartcat import --collection=${{ inputs.translationFileName }} ${{ inputs.filepath }} --project ${{ inputs.projectId }} --language en-US 
       shell: sh
-    - run: |
-        rm -rf smartcat.json
-      shell: sh
