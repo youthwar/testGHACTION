@@ -10,15 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-    
-      - name: WithAction
-        uses: ./customActions/push
-        with:
-          workspace: "7b551253-7660-433f-ac14-e04144325bff"
-          projectId: "fdfa0c4f-b08c-435f-9b57-6e54930280d3"
-          apiToken: "4_AKCaq7P1q2NOgrk54FD2U2tLA"
-          filepath: "./test.json" 
-          translationFileName: "NEWEST"
+  
       - name: WithAction
         uses: ./customActions/pull
         with:
