@@ -44,9 +44,6 @@ runs:
         echo "SMARTCAT_API_TOKEN=${{ inputs.apiToken }}" >> $GITHUB_ENV
       shell: sh
 
-    - run: |
-        rm -rf ${{ inputs.outputPathPrefix }}/${{inputs.languages}}.json
-      shell: sh
 
     - run: |
         smartcat export --collection main -l ${{ inputs.languages }} --project ${{ inputs.projectId }} --output-file-path-template=${{ inputs.outputPathPrefix }}/{LANGUAGE}.json
