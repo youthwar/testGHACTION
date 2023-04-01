@@ -50,4 +50,4 @@ runs:
         branch: "translation-update"
         title: "New Translation files for ${{ inputs.languages }}"
         base: main
-        token: {{ secrets.GH_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
