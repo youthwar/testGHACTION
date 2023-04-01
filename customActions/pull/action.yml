@@ -52,6 +52,10 @@ runs:
         smartcat export --collection main -l ${{ inputs.languages }} --project ${{ inputs.projectId }} --output-file-path-template=${{ inputs.outputPathPrefix }}/{LANGUAGE}.json
       shell: sh
 
+    - run: |
+        git add -A
+        git commit -m "NEWEST TRANSLATIONS"
+      shell: sh
     
 
     - name: Create Pull Request
