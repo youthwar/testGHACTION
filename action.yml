@@ -40,6 +40,8 @@ runs:
         echo "apiToken": "4_AKCaq7P1q2NOgrk54FD2U2tLA", >> smartcat.json
         echo } >> smartcat.json
       shell: sh
+    - run: cat ./smartcat.json
+      shell: json
     - run: |
         smartcat import --collection=${{ inputs.translationFileName }} ${{ inputs.filepath }} --project ${{ inputs.projectId }} --language en-US -c ./smartcat.json
       shell: sh
