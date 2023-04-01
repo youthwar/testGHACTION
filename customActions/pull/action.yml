@@ -51,3 +51,4 @@ runs:
         title: "New Translation files for ${{ inputs.languages }} "
         assignees: youthwar
         base: main
+        token: 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
