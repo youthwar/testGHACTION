@@ -22,6 +22,10 @@ inputs:
     description: 'output of the filepath'
     required: true
 
+  GH_TOKEN:
+    description: 'test'
+    required: true
+
   
 
 runs:
@@ -50,4 +54,4 @@ runs:
         branch: "translation-update"
         title: "New Translation files for ${{ inputs.languages }}"
         base: main
-        token: ${{ secrets.GH_TOKEN }}
+        token: ${{ inputs.GH_TOKEN }}
