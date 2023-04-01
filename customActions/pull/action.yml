@@ -45,8 +45,14 @@ runs:
       shell: sh
 
     - run: |
+        rm -rf ${{ inputs.outputPathPrefix }}/${{inputs.languages}}.json
+      shell: sh
+
+    - run: |
         smartcat export --collection main -l ${{ inputs.languages }} --project ${{ inputs.projectId }} --output-file-path-template=${{ inputs.outputPathPrefix }}/{LANGUAGE}.json
       shell: sh
+
+    
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
