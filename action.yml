@@ -32,18 +32,14 @@ runs:
       shell: sh
 
     - run: |
-        touch smartcat.json
-        echo { >> smartcat.json
-        echo "server": ${{ inputs.server}}, >> smartcat.json,
-        echo "workspace": ${{ inputs.workspace}}, >> smartcat.json
-        echo "project": "fdfa0c4f-b08c-435f-9b57-6e54930280d3", >> smartcat.json
-        echo "apiToken": "4_AKCaq7P1q2NOgrk54FD2U2tLA", >> smartcat.json
-        echo } >> smartcat.json
+        echo "SMARTCAT_SERVER=${{ inputs.server }}" >> $GITHUB_ENV
+        echo "SMARTCAT_WORKSPACE=${{ inputs.workspace }}" >> $GITHUB_ENV
+        echo "SMARTCAT_PROJECT=${{ inputs.projectId }}" >> $GITHUB_ENV
+        echo "SMARTCAT_API_TOKEN=${{ inputs.apiToken }}" >> $GITHUB_ENV
       shell: sh
-    - run: cat ./smartcat.json
-      shell: json
+
     - run: |
-        smartcat import --collection=${{ inputs.translationFileName }} ${{ inputs.filepath }} --project ${{ inputs.projectId }} --language en-US -c ./smartcat.json
+        smartcat import --collection=${{ inputs.translationFileName }} ${{ inputs.filepath }} --project ${{ inputs.projectId }} --language en-US 
       shell: sh
     - run: |
         rm -rf smartcat.json
