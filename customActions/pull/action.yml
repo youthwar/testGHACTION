@@ -58,3 +58,4 @@ runs:
         title: "New Translation files for ${{ inputs.languages }}"
         base: main
         token: ${{ inputs.GH_TOKEN }}
+        labels: translation
