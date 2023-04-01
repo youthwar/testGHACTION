@@ -15,6 +15,7 @@ jobs:
           curl "https://smartcat-cli.s3.amazonaws.com/smartcat-linux-x64.zip" -o /tmp/smartcat.zip
           unzip -q /tmp/smartcat.zip -d /usr/local/bin
           chmod +x /usr/local/bin/smartcat
+
       - name: Test
-        run: smartcat import collection=actiontest ./test.json --project fdfa0c4f-b08c-435f-9b57-6e54930280d3 --language en-US
+        run: smartcat import collection=actiontest ./test.json --project fdfa0c4f-b08c-435f-9b57-6e54930280d3 --language en-US -c ./config.json
 
