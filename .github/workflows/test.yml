@@ -5,11 +5,11 @@ on:
       - main
 
 jobs:
-  TEST:
+  test:
     runs-on: ubuntu-latest
-   
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Build SmartCat
         - run: |
           curl "https://smartcat-cli.s3.amazonaws.com/smartcat-osx-x64.zip" -o /tmp/smartcat.zip
