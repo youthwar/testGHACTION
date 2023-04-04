@@ -15,7 +15,7 @@ jobs:
         uses: ./customActions/pull
         with:
           workspace: ${{ secrets.WORKSPACE }}
-          projectId: ${{ secreets.PROJECTID }}
+          projectId: ${{ secrets.PROJECTID }}
           apiToken:  ${{ secrets.TOKEN}}
           languages: fr
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
