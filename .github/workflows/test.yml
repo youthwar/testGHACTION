@@ -11,21 +11,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+
       - name: WithAction
-        uses: ./customActions/push
+        uses: ./customActions/pull
         with:
           workspace: ${{ secrets.WORKSPACE }}
           projectId: ${{ secrets.PROJECTID }}
-          apiToken: ${{ secrets.TOKEN}}
-          filepath: "./test.json" 
-          translationFileName: "NEWEST"
-  
-     #- name: WithAction
-      #  uses: ./customActions/pull
-      #  with:
-      #    workspace: ${{ secrets.WORKSPACE }}
-      #    projectId: ${{ secrets.PROJECTID }}
-      #    apiToken:  ${{ secrets.TOKEN}}
-      #    languages: fr
-      #    GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      #    outputPathPrefix: "./src/i18n/translations"
+          apiToken:  ${{ secrets.TOKEN}}
+          languages: fr
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          outputPathPrefix: "./src/i18n/translations"
