@@ -26,8 +26,6 @@ inputs:
     description: 'test'
     required: true
 
-  
-
 runs:
   using: "composite"
   steps:
@@ -44,12 +42,9 @@ runs:
         echo "SMARTCAT_API_TOKEN=${{ inputs.apiToken }}" >> $GITHUB_ENV
       shell: sh
 
-
     - run: |
         smartcat export --collection main -l ${{ inputs.languages }} --project ${{ inputs.projectId }} --output-file-path-template=${{ inputs.outputPathPrefix }}/{LANGUAGE}.json
       shell: sh
-
-    
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
