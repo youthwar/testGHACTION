@@ -1,0 +1,43 @@
+name: 'SmartCat Push'
+description: 'Pushes updates for translation files into smartcat'
+inputs:
+  server:  # id of input
+    description: 'which server to hit'
+    required: false
+    default: 'https://smartcat.com'
+  workspace:
+    description: 'workspace id'
+    required: true
+  projectId:
+    description: 'project id'
+    required: true
+  apiToken:
+    description: 'api token'
+    required: true
+  filepath:
+    description: 'where to grab the english file from'
+    required: true
+  translationFileName:
+    description: 'the name of the file to show up in the translation dashboard'
+    required: false
+    default: 'app'
+
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        curl "https://smartcat-cli.s3.amazonaws.com/smartcat-linux-x64.zip" -o /tmp/smartcat.zip
+        unzip -q /tmp/smartcat.zip -d /usr/local/bin
+        chmod +x /usr/local/bin/smartcat
+      shell: sh
+
+    - run: |
+        echo "SMARTCAT_SERVER=${{ inputs.server }}" >> $GITHUB_ENV
+        echo "SMARTCAT_WORKSPACE=${{ inputs.workspace }}" >> $GITHUB_ENV
+        echo "SMARTCAT_PROJECT=${{ inputs.projectId }}" >> $GITHUB_ENV
+        echo "SMARTCAT_API_TOKEN=${{ inputs.apiToken }}" >> $GITHUB_ENV
+      shell: sh
+
+    - run: |
+        smartcat import --collection=${{ inputs.translationFileName }} ${{ inputs.filepath }} --project ${{ inputs.projectId }} --language en-US 
+      shell: sh

@@ -1,0 +1,56 @@
+name: 'SmartCat Pull'
+description: 'Pushes updates for translation files into smartcat'
+inputs:
+  server:  # id of input
+    description: 'which server to hit'
+    required: false
+    default: 'https://smartcat.com'
+  workspace:
+    description: 'workspace id'
+    required: true
+  projectId:
+    description: 'project id'
+    required: true
+  apiToken:
+    description: 'api token'
+    required: true
+  languages: 
+    description: 'a comma seperated list'
+    required: false
+    default: fr,en
+  outputPathPrefix:
+    description: 'output of the filepath'
+    required: true
+
+  GH_TOKEN:
+    description: 'test'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        curl "https://smartcat-cli.s3.amazonaws.com/smartcat-linux-x64.zip" -o /tmp/smartcat.zip
+        unzip -q /tmp/smartcat.zip -d /usr/local/bin
+        chmod +x /usr/local/bin/smartcat
+      shell: sh
+
+    - run: |
+        echo "SMARTCAT_SERVER=${{ inputs.server }}" >> $GITHUB_ENV
+        echo "SMARTCAT_WORKSPACE=${{ inputs.workspace }}" >> $GITHUB_ENV
+        echo "SMARTCAT_PROJECT=${{ inputs.projectId }}" >> $GITHUB_ENV
+        echo "SMARTCAT_API_TOKEN=${{ inputs.apiToken }}" >> $GITHUB_ENV
+      shell: sh
+
+    - run: |
+        smartcat export --collection main -l ${{ inputs.languages }} --project ${{ inputs.projectId }} --output-file-path-template=${{ inputs.outputPathPrefix }}/{LANGUAGE}.json
+      shell: sh
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        branch: "translation-update"
+        title: "New Translation files for ${{ inputs.languages }}"
+        base: main
+        token: ${{ inputs.GH_TOKEN }}
+        labels: translation
